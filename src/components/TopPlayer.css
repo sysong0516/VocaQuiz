@@ -1,0 +1,8 @@
+.TopPlayer{
+  max-width: 250px;
+  margin: 0 auto;
+  padding: 5px;
+  position: fixed;
+  right: 5px;
+  top: 200px;
+}
