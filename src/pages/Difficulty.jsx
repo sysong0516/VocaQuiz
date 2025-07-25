@@ -39,6 +39,7 @@ function Difficulty(){
       <br/>
       <Button onClick={()=>{
         dispatch(changeDiff(radioValue))
+        alert('적용되었습니다')
       }}>적용</Button>
     </>
   )
