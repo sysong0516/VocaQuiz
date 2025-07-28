@@ -1,0 +1,45 @@
+/* 가로 버전 TopPlayer 스타일 */
+.TopPlayerHorizontal {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  margin: 0;
+  background: rgba(0,0,0,0.1);
+  padding: 10px 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+.TopPlayer{
+  border-radius: 20px;
+  max-width: 250px;
+  margin: 0 auto;
+  padding: 5px;
+  position: fixed;
+  right: 5px;
+  top: 200px;
+  background-color: rgba(0,0,0,0.1);
+  font-size:30px;
+}
+
+.TPCard{
+  border-radius: 20px;
+  margin:10px;
+  background-color: white;
+  width:100px;
+  height:150px;
+}
+
+.TPCardHorizontal{
+  border-radius: 20px;
+  font-size: 20px;
+  margin:10px;
+  background-color: white;
+  width:400px;
+  height:100px;
+}
