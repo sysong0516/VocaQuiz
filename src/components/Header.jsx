@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, useNavigate } from "react-router-dom";
+import './Header.css'
 
 function Header() {
 
@@ -9,7 +10,7 @@ function Header() {
 
   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar bg="dark" data-bs-theme="dark" className='head'>
         <Container>
           <Navbar.Brand onClick={() => navigate('/')}>너는맞추어라영단어를</Navbar.Brand>
           <Nav className="me-auto">

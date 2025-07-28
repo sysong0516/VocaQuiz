@@ -5,7 +5,7 @@ function Name({setName}) {
   const navigate = useNavigate();
   return (
     <>
-      <Form.Label htmlFor="inputPassword5">Insert your Name</Form.Label>
+      <Form.Label htmlFor="inputPassword5">닉네임을 입력해주세요</Form.Label>
       <Form.Control
         type="text"
         id="nickName"
@@ -15,8 +15,7 @@ function Name({setName}) {
         }}
       />
       <Form.Text id="nickName block" muted>
-        Your Name must be 4~20 characters long, contain letters and numbers,
-        and must not contain spaces, special characters, or emoji.
+       
       </Form.Text>
       <br/>
       <button onClick={()=>{
