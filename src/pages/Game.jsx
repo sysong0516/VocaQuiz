@@ -43,6 +43,20 @@ function Game({ name, score, setScore }) {
 
   useEffect(() => {
     if (index == 6) {
+      let Rank = localStorage.getItem('rank');
+      let userResult=[{rank: 1, name:name, score:score, time:new Date().toLocaleTimeString()}];
+      if(Rank!=null){
+        Rank=JSON.parse(Rank);
+        Rank.push(userResult[0])
+        Rank.sort((a,b)=>b.score-a.score)
+        Rank.map((data,i)=>{
+          data.rank=i+1;
+        })
+        localStorage.setItem('rank', JSON.stringify(Rank));
+      }
+      else{
+        localStorage.setItem('rank', JSON.stringify(userResult));
+      }
       shuffle();
       navigate('/gameResult')
     }
@@ -54,8 +68,11 @@ function Game({ name, score, setScore }) {
       setTimeLeft(prev => prev - 1);
     }, 1000);
 
-    // Clean-up 함수 (컴포넌트 언마운트 시 타이머 해제)
-    return () => clearInterval(timer);
+    // Clean-up 함수 (컴포넌트 언마운트 시 타이머 해제 및 점수초기화)
+    return () =>{
+      setScore(0);
+      clearInterval(timer);
+    } 
   }, []);
 
   useEffect(() => {
@@ -93,8 +110,6 @@ function Game({ name, score, setScore }) {
       </div>
       <br />
       <h4>남은 시간: {timeLeft}초</h4>
-      <button>일시중지</button>
-      <button>정지</button>
       <p>현재 점수는 {score}</p>
       <p>{name}님의 남은 문제는 {6 - index}</p>
       <p>현재 난이도는 {diff.count == 1 ? '어려움' : '쉬움'}</p>

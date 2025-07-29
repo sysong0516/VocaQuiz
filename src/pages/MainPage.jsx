@@ -5,7 +5,6 @@ import './main.css'
 function MainPage({setScore}){
   const navigate = useNavigate();
   const diff = useSelector(state=>state.diff)
-  setScore(0)
   return(
     <div className="main-container">
       <p>준비되었다면<br/>바로 누르세요</p>
