@@ -32,6 +32,10 @@
   font-size:40px;
 }
 
+.name-feature button:hover{
+  background: #4f51a3;
+}
+
 .nick_input{
   font-size: 70%;
   margin-top:80px;
