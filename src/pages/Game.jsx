@@ -2,6 +2,7 @@ import { useSelector } from "react-redux"
 import quiz from "../../highschool_english_1000.json"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './Game.css'
 
 let randomSelection;
 let numbers;

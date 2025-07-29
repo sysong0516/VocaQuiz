@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { changeDiff } from '../redux/diff';
 import { Button } from 'react-bootstrap';
+import './Difficulty.css'
 
 function Difficulty(){
   const diff = useSelector(state=>state.diff)

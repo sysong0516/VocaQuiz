@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import './GameResult.css'
 
 function GameResult({ name, score }) {
   const navigate = useNavigate()
