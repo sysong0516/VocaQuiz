@@ -1,0 +1,10 @@
+.rank-container{
+  width:70%;
+}
+
+@media(max-width: 1000px){
+  .rank-container{
+    width:100%;
+    font-size: 25px;
+  }
+}

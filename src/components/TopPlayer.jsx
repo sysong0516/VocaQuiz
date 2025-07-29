@@ -1,17 +1,22 @@
 import './TopPlayer.css'
 
-function TopPlayer(){
-  return(
+function TopPlayer() {
+  const rank = JSON.parse(localStorage.getItem('rank'));
+  const isNull = rank == null
+  return (
     <div className='TopPlayer'>
-      <div className='TPCard'>
-        <p>1등</p>
-      </div>
-      <div className='TPCard'>
-        <p>2등</p>
-      </div>
-      <div className='TPCard'>
-        <p>3등</p>
-      </div>
+      {
+        isNull ? <p></p> :
+          rank.slice(0, 3).map((data, i) => {
+            return (
+              <div className='TPCard' key={i}>
+                <p>{i + 1}등</p>
+                <p>{data.name}</p>
+                <p>{data.score}점</p>
+              </div>
+            )
+          })
+      }
     </div>
   )
 }

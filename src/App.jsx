@@ -10,16 +10,19 @@ import TopPlayer from './components/TopPlayer'
 import TopPlayerHorizontal from './components/TopPlayerHorizontal'
 import Name from './pages/Name'
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 function App() {
   const [name, setName] = useState('');
   const [score, setScore] = useState(0);
+  const location = useLocation();
 
   return (
     <>
       <Header />
       <div className="app-container">
-        <TopPlayer />
+        {location.pathname !== '/rank' && <TopPlayer />}
+        {location.pathname !== '/rank' && <TopPlayerHorizontal/>}
         <Routes>
           <Route path='/' element={<MainPage setScore={setScore} />} />
           <Route path='/name' element={<Name setName={setName} />} />
@@ -28,7 +31,6 @@ function App() {
           <Route path='/rank' element={<Ranking />} />
           <Route path='/difficulty' element={<Difficulty />} />
         </Routes>
-        <TopPlayerHorizontal/>
       </div>
     </>
   )
