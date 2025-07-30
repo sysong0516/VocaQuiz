@@ -1,4 +1,4 @@
-import Header from './components/header'
+import Header from './components/Header'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import Game from './pages/Game'
