@@ -1,4 +1,5 @@
 import './TopPlayer.css'
+import TPCard from './TPCard'
 
 function TopPlayerHorizontal() {
   const rank = JSON.parse(localStorage.getItem('rank'));
@@ -9,13 +10,9 @@ function TopPlayerHorizontal() {
         isNull ? <p></p> :
           rank.slice(0, 3).map((data, i) => {
             return (
-              <div className='TPCardHorizontal' key={i}>
-                <p>{i + 1}등</p>
-                <p>{data.name}</p>
-                <p>{data.score}점</p>
-              </div>
+              <TPCard rankData={data} key={i}/>
             )
-          })
+            })
       }
     </div>
   )

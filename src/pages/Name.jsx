@@ -11,6 +11,8 @@ function Name({ setName }) {
       <div className='name-feature'>
         <Form.Label htmlFor="inputPassword5">닉네임을 입력해주세요</Form.Label>
         <Form.Control
+          autoComplete="off"
+          placeholder='1~5글자를 입력해주세요'
           className='nick_input'
           type="text"
           id="nickName"
@@ -29,6 +31,10 @@ function Name({ setName }) {
           }
           else if (!userName || userName.trim() === '') {
             alert('닉네임을 입력하지 않았습니다');
+          }
+          else if(userName.length>5){
+            alert('글자 수가 초과되었습니다.');
+            document.getElementById('nickName').value = '';
           }
           else {
             setName(userName);
