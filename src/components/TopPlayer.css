@@ -1,3 +1,17 @@
+.TPCard {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+@media(max-width: 800px){
+  .TPCard{
+    margin-right: 15px;
+  }
+  .Tpbr{
+    display:none;
+  }
+}
+
 /* 가로 버전 TopPlayer 스타일 */
 .TopPlayerHorizontal {
   border-radius: 20px;
@@ -14,12 +28,13 @@
   bottom: 0;
   z-index: 1000;
   box-sizing: border-box;
+  font-size:30px;
 }
 .TopPlayer{
   border-radius: 20px;
   max-width: 250px;
-  margin: 0 auto;
-  padding: 5px;
+  margin: 10px auto;
+  padding: 10px;
   position: fixed;
   right: 5px;
   top: 200px;
@@ -27,19 +42,6 @@
   font-size:30px;
 }
 
-.TPCard{
-  border-radius: 20px;
-  margin:10px;
-  background-color: white;
-  width:100px;
-  height:150px;
-}
-
-.TPCardHorizontal{
-  border-radius: 20px;
-  font-size: 20px;
-  margin:10px;
-  background-color: white;
-  width:400px;
-  height:100px;
+.TpData span{
+  margin-right:5px;
 }

@@ -9,7 +9,7 @@ import GameResult from './pages/GameResult'
 import TopPlayer from './components/TopPlayer'
 import TopPlayerHorizontal from './components/TopPlayerHorizontal'
 import Name from './pages/Name'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 function App() {

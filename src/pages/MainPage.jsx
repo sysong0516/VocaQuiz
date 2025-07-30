@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux";
-import './main.css'
+import './MainPage.css'
 
 function MainPage({setScore}){
   const navigate = useNavigate();
