@@ -1,48 +1,62 @@
 import { useSelector } from "react-redux"
 import quiz from "../../highschool_english_1000.json"
+import quiz_rev from "../../highschool_english_reverse.json"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Game.css'
 
-let randomSelection;
 let numbers;
 let shuffled;
 
 const quizArray = [];
-function shuffle() {
-  numbers = Array.from({ length: 1000 }, (_, i) => i);
+
+function shuffle(diff) {
+  if (diff) {
+    quiz.push(...quiz_rev);
+  }
+  numbers = Array.from({ length: quiz.length }, (_, i) => i);
   shuffled = numbers.sort(() => Math.random() - 0.5);
-  randomSelection = shuffled.slice(350, 355);
-  randomSelection.map((num, i) => {
+
+  shuffled.map((num, i) => {
     quizArray[i + 1] = quiz[num]
   })
 }
 
-shuffle();
+shuffle(false);
 
 function Game({ name, score, setScore }) {
 
-  const diff = useSelector(state => state.diff)
+  const diff = useSelector(state => state.diff);
 
   const navigate = useNavigate();
 
   const [index, setIndex] = useState(0);
 
+  const [lifePoint, setLifePoint] = useState(diff.count == 0 ? 6 : 4);
+
+  const [addScore, setAddScore] = useState(diff.count == 0 ? 10 : 15);
+
+  const limit = diff.count == 0 ? 5 : 3
+
   function chk(choice) {
     if (quizArray[index].choices[choice].correct) {
-      setScore(score + 10)
+      setScore(score + addScore)
       alert('정답')
-      setTimeLeft(5)
+      setTimeLeft(limit)
     }
     else {
       alert('오답')
-      setTimeLeft(5)
+      setTimeLeft(limit)
+      setLifePoint(lifePoint - 1)
     }
     setIndex(index + 1)
+    if(index==quiz.length){
+      navigate('/gameResult')
+    }
   }
 
   useEffect(() => {
-    if (index == 6) {
+    if (lifePoint == 0) {
       let Rank = localStorage.getItem('rank');
       let userResult = [{ rank: 1, name: name, score: score, time: new Date().toLocaleTimeString() }];
       if (Rank != null) {
@@ -57,13 +71,15 @@ function Game({ name, score, setScore }) {
       else {
         localStorage.setItem('rank', JSON.stringify(userResult));
       }
-      shuffle();
       navigate('/gameResult')
     }
   }, [index])
 
-  const [timeLeft, setTimeLeft] = useState(5);
+  const [timeLeft, setTimeLeft] = useState(limit);
   useEffect(() => {
+    if (diff.count!=0) {
+      shuffle(true)
+    }
     const timer = setInterval(() => {
       setTimeLeft(prev => prev - 1);
     }, 1000);
@@ -77,8 +93,9 @@ function Game({ name, score, setScore }) {
 
   useEffect(() => {
     if (timeLeft <= 0) {
-      setTimeLeft(5)
+      setTimeLeft(limit)
       setIndex(index + 1)
+      setLifePoint(lifePoint - 1)
     }
   }, [timeLeft])
 
@@ -95,7 +112,7 @@ function Game({ name, score, setScore }) {
     )
   }
 
-  if (index == 6) {
+  if (lifePoint == 0) {
     return (
       <div className="game-bg">
         <div className="game-container">
@@ -111,15 +128,16 @@ function Game({ name, score, setScore }) {
       <div className="game-container">
         <div>
           <h4 className="quiz">{quizArray[index].question}</h4>
-          <button onClick={() => { chk(0) }}>{quizArray[index].choices[0].korean}</button>
-          <button onClick={() => { chk(1) }}>{quizArray[index].choices[1].korean}</button>
-          <button onClick={() => { chk(2) }}>{quizArray[index].choices[2].korean}</button>
-          <button onClick={() => { chk(3) }}>{quizArray[index].choices[3].korean}</button>
+          {quizArray[index].choices.map((choice, i) => {
+            return (
+              <button key={i} onClick={() => { chk(i) }}>{quizArray[index].choices[i].korean ? quizArray[index].choices[i].korean : quizArray[index].choices[i].english}</button>
+            )
+          })}
         </div>
         <br />
         <h4>남은 시간: {timeLeft}초</h4>
         <p>Score : {score}</p>
-        <p>남은 문제: {6 - index}</p>
+        <p>남은 체력: {lifePoint}</p>
         <p>Level : {diff.count == 1 ? '어려움' : '쉬움'}</p>
       </div>
     </div>
