@@ -21,7 +21,7 @@ function Difficulty() {
   return (
     <div className='diff-bg'>
       <div className='diff-container'>
-        <h1>난이도를 설정해주세요</h1>
+        <h1>난이도를<br className="diff-br"/> 설정해주세요</h1>
         <ButtonGroup className="mb-2">
           {radios.map((radio, idx) => (
             <ToggleButton

@@ -21,8 +21,8 @@ function App() {
     <>
       <Header />
       <div className="app-container">
-        {location.pathname !== '/rank' && <TopPlayer />}
-        {location.pathname !== '/rank' && <TopPlayerHorizontal/>}
+        {location.pathname !== '/rank' && location.pathname != '/game' && <TopPlayer />}
+        {location.pathname !== '/rank' && location.pathname != '/game' && <TopPlayerHorizontal/>}
         <Routes>
           <Route path='/' element={<MainPage setScore={setScore} />} />
           <Route path='/name' element={<Name setName={setName} />} />

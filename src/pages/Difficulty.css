@@ -17,7 +17,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap:10px;
   color: #fff;
   height: 60vh;
 }
@@ -63,3 +62,16 @@
   font-size: 50px;
 }
 
+.diff-br{
+  display:none;
+}
+
+@media(max-width: 1000px){
+  .diff-container{
+    width:100%;
+    font-size:15px;
+  }
+  .diff-br{
+    display:block;
+  }
+}
