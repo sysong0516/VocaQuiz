@@ -51,3 +51,12 @@
   margin: 10px 0;
   color: #444;
 }
+
+.heart-container{
+  display: flex;
+}
+
+.heart{
+  width:40px;
+  height:40px;
+}
