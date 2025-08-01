@@ -36,13 +36,13 @@ function Game({ name, score, setScore }) {
 
   const [addScore, setAddScore] = useState(diff.count == 0 ? 10 : 15);
 
-  const limit = diff.count == 0 ? 5 : 3
+  const limit = diff.count == 0 ? 6 : 4
 
   function chk(choice) {
     if (quizArray[index].choices[choice].correct) {
       setScore(score + addScore)
-      alert('정답')
       setTimeLeft(limit)
+      alert('정답')
     }
     else {
       alert('오답')
@@ -50,9 +50,17 @@ function Game({ name, score, setScore }) {
       setLifePoint(lifePoint - 1)
     }
     setIndex(index + 1)
-    if(index==quiz.length){
+    if (index == quiz.length) {
       navigate('/gameResult')
     }
+  }
+
+  function heart() {
+    const h = [];
+    for (let i = 0; i < lifePoint; i++) {
+      h.push(1);
+    }
+    return h;
   }
 
   useEffect(() => {
@@ -77,7 +85,7 @@ function Game({ name, score, setScore }) {
 
   const [timeLeft, setTimeLeft] = useState(limit);
   useEffect(() => {
-    if (diff.count!=0) {
+    if (diff.count != 0) {
       shuffle(true)
     }
     const timer = setInterval(() => {
@@ -135,9 +143,17 @@ function Game({ name, score, setScore }) {
           })}
         </div>
         <br />
+        <div className="heart-container">
+          {
+            heart().map((data, i) => {
+              return (
+                <img className="heart" src="/img/heart.png" key={i} />
+              )
+            })
+          }
+        </div>
         <h4>남은 시간: {timeLeft}초</h4>
         <p>Score : {score}</p>
-        <p>남은 체력: {lifePoint}</p>
         <p>Level : {diff.count == 1 ? '어려움' : '쉬움'}</p>
       </div>
     </div>
