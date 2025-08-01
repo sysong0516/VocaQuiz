@@ -1,7 +1,7 @@
-.main-container{
-  width:70%;
-  padding:50px;
-  margin:0px;
+.main-container {
+  width: 70%;
+  padding: 50px;
+  margin: 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,37 +10,85 @@
   background-color: white;
 }
 
-button{
+button {
   border-radius: 20px;
-  margin:50px;
+  margin: 50px;
   background-color: white;
-  padding:20px;
+  padding: 20px;
 }
 
-.main-container button:hover{
-  background-color: #e0e0e0; /* 연회색 */
+.main-container button:hover {
+  background-color: #e0e0e0;
+  /* 연회색 */
   color: #333;
 }
 
-.sub-container{
+.sub-container {
+  align-items: center;
   font-size: 40px;
-  padding:35px;
+  padding: 35px;
   border-radius: 15px;
-  width:100%;
-  background-color: rgba(0,0,0,0.2);
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
   margin: 50px;
+  gap: 20px;
 }
 
-.sub-container > img{
-  width:100%;
-  height: 600px;
+.textField {
+  text-align: center;
+  background-color: white;
+  padding: 35px;
+  height: 400px;
+  width: 60%;
+  border-radius: 20px;
+  font-size: 30px;
+  padding-top:100px;
 }
 
-@media(max-width: 1200px){
-  .main-container{
-    width:100%;
+.sub-container>img {
+  width: 40%;
+  height: 400px;
+}
+
+@media(max-width: 1200px) {
+  .main-container {
+    width: 100%;
   }
-  .sub-container{
+
+  .sub-container {
     font-size: 25px;
+  }
+
+  .textField {
+    margin-top: 10px;
+    padding-top: 50px;
+    height: 250px;
+    width: 100%;
+  }
+
+  .sub-container>img {
+    width: 50%;
+    height: 400px;
+  }
+}
+
+@media(max-width:1000px) {
+  .sub-container>img {
+    width: 75%;
+  }
+}
+
+@media(max-width: 800px){
+  .sub-container>img {
+    width: 100%;
+  }
+  .textField{
+    font-size: 20px;
+  }
+}
+
+@media(min-width: 1200px) {
+  .sub-container {
+    display: flex;
   }
 }
