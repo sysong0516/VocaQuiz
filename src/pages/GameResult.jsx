@@ -5,9 +5,6 @@ function GameResult({ name, score }) {
   const navigate = useNavigate()
   const rank = JSON.parse(localStorage.getItem('rank'));
   let playedUser;
-  if (!name) {
-    navigate('/');
-  }
   rank.map((data, i) => {
     if (data.name == name) {
       playedUser = i;
