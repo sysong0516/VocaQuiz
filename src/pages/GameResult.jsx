@@ -5,6 +5,9 @@ function GameResult({ name, score }) {
   const navigate = useNavigate()
   const rank = JSON.parse(localStorage.getItem('rank'));
   let playedUser;
+  if (!name) {
+    navigate('/');
+  }
   rank.map((data, i) => {
     if (data.name == name) {
       playedUser = i;
@@ -12,13 +15,20 @@ function GameResult({ name, score }) {
   })
   return (
     <div className="game-bg">
-      <div className="game-container">
-        <p>{name}님의 점수는 {rank[playedUser].score}점~</p>
-        <p>Rank : {rank[playedUser].rank}등</p>
-        <button onClick={() => {
-          navigate('/')
-        }}>메인화면으로</button>
-      </div>
+      {playedUser ?
+        <div className="game-container">
+          <p>{name}님의 점수는 {rank[playedUser].score}점~</p>
+          <p>Rank : {rank[playedUser].rank}등</p>
+          <button onClick={() => {
+            navigate('/')
+          }}>메인화면으로</button>
+        </div> :
+        <div className="game-container">
+          <p>만료되었습니다</p>
+          <button onClick={() => {
+            navigate('/')
+          }}>메인화면으로</button>
+        </div>}
     </div>
   )
 }
