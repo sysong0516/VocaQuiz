@@ -85,6 +85,11 @@ function Game({ name, score, setScore }) {
 
   const [timeLeft, setTimeLeft] = useState(limit);
   useEffect(() => {
+    if(!name){
+      alert('세션이 만료되었습니다. 메인화면으로 이동합니다.');
+      navigate('/');
+      return;
+    }
     if (diff.count != 0) {
       shuffle(true)
     }

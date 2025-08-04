@@ -15,7 +15,7 @@ function GameResult({ name, score }) {
   })
   return (
     <div className="game-bg">
-      {playedUser ?
+      {name ?
         <div className="game-container">
           <p>{name}님의 점수는 {rank[playedUser].score}점~</p>
           <p>Rank : {rank[playedUser].rank}등</p>
